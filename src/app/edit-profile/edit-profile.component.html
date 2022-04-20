@@ -1,0 +1,67 @@
+<div class="container w-25 pt-5">
+    <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)">
+        <div class="input-group mb-3">
+            <label class="input-group-text" for="inputGroupFile01">Profile photo</label>
+            <input type="file" class="form-control" id="inputGroupFile01">
+          </div>
+          <!-- First name -->
+      <label class="form-label">First name</label>
+      <input formControlName="firstname" class="form-control" type="text">
+      <small *ngIf="form.get('firstname')?.invalid && form.get('firstname')?.touched" class="text-danger">First name is required.</small><br>
+  
+      <!-- Last Name -->
+      <label class="form-label">Last name</label>
+      <input formControlName="lastname" class="form-control" type="text">
+      <small *ngIf="form.get('lastname')?.invalid && form.get('lastname')?.touched" class="text-danger">Last name is required.</small><br>
+  
+      <!-- Email -->
+      <label class="form-label">Email</label>
+      <input formControlName="email" class="form-control" type="email">
+      <small *ngIf="form.get('email')?.invalid && form.get('email')?.touched" class="text-danger">Email is required.</small><br>
+  
+      <div formGroupName="phone">
+        <!-- Country code -->
+        <label class="form-label">Country code</label>
+        <select formControlName="countryCode" class="form-control" name="country" id="country">
+          <option value="" disabled selected>Select Country</option>
+          <option *ngFor="let country of countries" value={{country.code}}>{{country.name}} ({{country.code}})</option>
+     </select>
+        <small *ngIf="form.get('phone.countryCode')?.invalid && form.get('phone.countryCode')?.touched" class="text-danger">Country is required.</small><br>
+    
+        <!-- Number -->
+        <label class="form-label">Number</label>
+        <input formControlName="mobile" class="form-control" type="text">
+        <small *ngIf="form.get('phone.mobile')?.invalid && form.get('phone.mobile')?.touched" class="text-danger">Mobile number is required with length of 10.</small><br>
+      </div>
+<!-- Gender -->
+<label class="form-label">Gender</label>
+<select formControlName="gender" class="form-control">
+    <option value="" disabled selected>Select Country</option>
+    <option value="Male" >Male</option>
+    <option value="Female" >Female</option>
+</select> <br>
+
+<!-- Date of birth -->
+<label class="form-label">Date of birth</label>
+<input formControlName="dateOfBirth" class="form-control" type="date"> <br>
+            <!-- Old Password -->
+            <label class="form-label">Old password</label>
+            <input formControlName="oldPass" class="form-control" type="password">
+            <small *ngIf="form.get('oldPass')?.invalid && form.get('oldPass')?.touched" class="text-danger">Password is required.</small><br>
+
+      <!-- New Password -->
+      <label class="form-label">New password</label>
+      <input formControlName="newPass" class="form-control" type="password">
+      <small *ngIf="form.get('newPass')?.invalid && form.get('password')?.touched" class="text-danger">Password is required.</small><br>
+  
+      <!-- Comfirm password -->
+      <label class="form-label">Confirm password</label>
+      <input formControlName="confirmPass" class="form-control" type="password">
+      <small *ngIf="form.get('confirmPass')?.invalid && form.get('confirmPass')?.touched" class="text-danger">Confirm password is required.</small><br>
+  
+      <!-- Submit button -->
+      <div class="row pt-3">
+        <button class="col btn btn-outline-secondary" type="submit">Update</button>
+      </div>
+    </form>
+  </div>

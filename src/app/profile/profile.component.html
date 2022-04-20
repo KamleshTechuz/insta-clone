@@ -1,0 +1,14 @@
+<div class="position-absolute top-50 start-50 translate-middle">
+  <div class="card" style="width: 18rem">
+    <img src="..." class="card-img-top" alt="..." />
+    <div class="card-body">
+      <h5 class="card-title">First name : {{ userData?.firstname }}</h5>
+      <h5 class="card-title">Last name : {{ userData?.lastname }}</h5>
+      <h5 class="card-title">Mobile : {{ userData?.number }}</h5>
+      <div class="row">
+        <a routerLink="/profile/{{userData?.firstname}}/edit-profile" class="col btn btn-primary">Edit profile</a>
+        <button type="button" class="col btn btn-primary" (click)="logout()">Logout</button>
+      </div>
+    </div>
+  </div>
+</div>
